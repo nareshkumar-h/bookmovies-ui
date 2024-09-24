@@ -1,14 +1,24 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-movies-list',
+  selector: 'app-view-movie',
   standalone: true,
-  imports: [RouterLink],
-  templateUrl: './movies-list.component.html',
+  imports: [],
+  templateUrl: './view-movie.component.html',
   styles: ``
 })
-export class MoviesListComponent {
+export class ViewMovieComponent {
+
+  movieName!: string;
+
+  movie: any;
+
+  constructor(private route: ActivatedRoute) {
+    this.movieName = this.route.snapshot.params["id"];
+
+    this.movie = this.movies.find(obj => obj.title == this.movieName); //Find the 1st matched element
+  }
 
   movies = [
     {
@@ -37,4 +47,6 @@ export class MoviesListComponent {
       description: "Drama/Suspense/Thriller"
     }
   ]
+
+
 }

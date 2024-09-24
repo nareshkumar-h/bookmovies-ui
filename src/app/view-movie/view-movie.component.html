@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <h1>Movies</h1>
+  <h1>Movies - {{movieName}}</h1>
 
   <!-- <div class="row">
     <div class="col-6">
@@ -15,13 +15,13 @@
   <br />
 
   <div class="row">
-    @for(movie of movies; track movie){
+    @if(movie){
     <div class="card col-3 movie-card">
       <img src="{{movie.imgUrl}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{movie.title}}</h5>
         <p class="card-text">{{movie.description}}</p>
-        <a routerLink="{{movie.title}}" class="btn btn-primary">View</a>
+        <a href="#" class="btn btn-primary">Booking Slot will be opened soon.</a>
       </div>
     </div>
     }
