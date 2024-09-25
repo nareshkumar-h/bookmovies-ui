@@ -1,30 +1,69 @@
 <div class="container-fluid">
   <h1>Movies</h1>
 
-  <!-- <div class="row">
-    <div class="col-6">
-      Section 1
-    </div>
-    <div class="col-4">
-      Section 2
-    </div>
-    <div class="col-2">
-      Section 3
-    </div>
-  </div> -->
-  <br />
-
   <div class="row">
-    @for(movie of movies; track movie){
-    <div class="card col-3 movie-card">
-      <img src="{{movie.imgUrl}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{movie.title}}</h5>
-        <p class="card-text">{{movie.description}}</p>
-        <a routerLink="{{movie.title}}" class="btn btn-primary">View</a>
+    <div class="col-3">
+      Filter:
+      <br />
+
+      <form (ngSubmit)="applyFilter()">
+
+        <div>
+          <label for="language">Language:</label>
+          <select name="language" [(ngModel)]="language">
+            <option>Tamil</option>
+            <option>English</option>
+            <option>Hindi</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="movieType">MovieType:</label>
+          <select name="movieType" [(ngModel)]="movieType">
+            <option>Horror</option>
+            <option>Action</option>
+            <option>Sports</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="price">Price Range</label>
+          <input type="number" min="1" name="minPrice" id="minPrice" [(ngModel)]="minPrice"
+            placeholder="Enter min price">
+          &nbsp;
+          <input type="number" min="1" name="maxPrice" id="maxPrice" [(ngModel)]="maxPrice"
+            placeholder="Enter max price">
+          &nbsp;
+        </div>
+
+
+
+        <br />
+        <button type="submit" class="btn btn-info">Submit</button> &nbsp;
+        <button type="reset" class="btn btn-danger" (click)="reset()">Reset</button>
+      </form>
+
+    </div>
+    <div class="col-9">
+      <div class="row">
+
+        @for(movie of movies; track movie){
+        <div class="card col-3 movie-card">
+          <img src="{{movie.imgUrl}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{movie.title}}</h5>
+            <p class="card-text">{{movie.description}}
+
+              - {{movie.language}}
+
+              - Rs.{{movie.price | currency:'INR'}}
+            </p>
+            <a routerLink="{{movie.title}}" class="btn btn-primary">View</a>
+          </div>
+        </div>
+        }
       </div>
     </div>
-    }
 
   </div>
 

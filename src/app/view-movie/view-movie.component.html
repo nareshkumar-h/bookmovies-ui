@@ -20,7 +20,17 @@
       <img src="{{movie.imgUrl}}" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{movie.title}}</h5>
-        <p class="card-text">{{movie.description}}</p>
+        <p class="card-text">
+          <span class="badge text-bg-info">{{movie.description}}</span>
+        </p>
+        <p>
+
+          <span class="badge text-bg-primary">{{movie.language}}</span> &nbsp;
+
+          <span class="badge text-bg-success">{{movie.price | currency:'INR'}}</span>
+
+          &nbsp;
+        </p>
         <a href="#" class="btn btn-primary">Booking Slot will be opened soon.</a>
       </div>
     </div>
