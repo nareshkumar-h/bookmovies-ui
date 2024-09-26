@@ -29,4 +29,10 @@ export class ViewMovieComponent implements OnInit {
     this.movie = this.movieService.getMovieById(this.movieId);
   }
 
+  addToCart(movie: any) {
+    localStorage.setItem("CART", JSON.stringify(movie));
+    alert("Added items to cart");
+    window.location.href = "/cart";
+  }
+
 }
