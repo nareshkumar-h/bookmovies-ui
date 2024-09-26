@@ -12,12 +12,13 @@ import { CommonModule } from '@angular/common';
 })
 export class ViewMovieComponent implements OnInit {
 
-  movieName!: string;
+  // movieName!: string;
+  movieId!: number;
 
   movie: any;
 
   constructor(private route: ActivatedRoute, private movieService: MovieService) {
-    this.movieName = this.route.snapshot.params["id"];
+    this.movieId = this.route.snapshot.params["id"];
 
 
   }
@@ -25,7 +26,7 @@ export class ViewMovieComponent implements OnInit {
 
     //this.movie = this.movies.find(obj => obj.title == this.movieName); //Find the 1st matched element
 
-    this.movie = this.movieService.getMovieDetail(this.movieName);
+    this.movie = this.movieService.getMovieById(this.movieId);
   }
 
 }

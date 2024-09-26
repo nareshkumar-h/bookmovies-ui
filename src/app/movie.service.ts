@@ -56,8 +56,13 @@ export class MovieService {
     return this.movies;
   }
 
+  getMovieById(id: number) {
+    const movie = this.movies.find(obj => obj.id == id);
+    return movie;
+  }
+
   // find method => Returns single movie if matched, else null
-  getMovieDetail(title: string) {
+  getMovieByTitle(title: string) {
     const selectedMovie = this.movies.find(obj => obj.title == title); // {}
     return selectedMovie;
   }
