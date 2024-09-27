@@ -30,7 +30,14 @@ export class LoginComponent {
 
     // 1. Fetch the registered user details from localStorage
     const usersStr = localStorage.getItem("USERS"); // returns in string
-    const users = usersStr != null ? JSON.parse(usersStr) : []; // convert string to object 
+    let users = [];
+    if (usersStr) {
+      users = JSON.parse(usersStr);
+    } else {
+      users = [];
+    }
+    // const val =  (condition)?'a':'b';// ternary operatory
+    //const users = usersStr != null ? JSON.parse(usersStr) : []; // convert string to object 
 
     //Using find check the input email/password matches
     //axios.post(url, data).then(res=> { ... })

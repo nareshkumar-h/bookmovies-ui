@@ -30,7 +30,21 @@ export class ViewMovieComponent implements OnInit {
   }
 
   addToCart(movie: any) {
-    localStorage.setItem("CART", JSON.stringify(movie));
+
+    //create empty array always
+    // const cartItems = [];
+
+    //1. find existing cart items and add item in that list
+    const cartItemStr = localStorage.getItem("CART");
+    const cartItems = cartItemStr != null ? JSON.parse(cartItemStr) : [];
+
+    //add item
+    cartItems.push(movie);
+
+    //store in db
+    localStorage.setItem("CART", JSON.stringify(cartItems));
+
+    //redirect to cart page
     alert("Added items to cart");
     window.location.href = "/cart";
   }
