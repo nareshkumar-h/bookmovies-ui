@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,],
   templateUrl: './login.component.html',
   styles: ``
 })
@@ -14,7 +15,7 @@ export class LoginComponent {
   email!: string;
   password!: string;
 
-  constructor() {
+  constructor(private readonly toastr: ToastrService) {
     console.log('LoginComponent');
   }
 
@@ -44,7 +45,10 @@ export class LoginComponent {
     const userExists = users.find((obj: any) => obj.email == this.email && obj.password == this.password);
 
     if (userExists != null) {
-      alert("Successfully Loggedin");
+      // alert("Successfully Loggedin");
+
+      this.toastr.success("Successfully Loggedin"); //new
+
       localStorage.setItem("LOGGED_IN_USER", "true");
       localStorage.setItem("EMAIL", this.email);
 
@@ -52,7 +56,8 @@ export class LoginComponent {
       window.location.href = "/movies";
     }
     else {
-      alert("Invalid Login Credentials");
+      // alert("Invalid Login Credentials");
+      this.toastr.error("Invalid Login Credentials"); //new
     }
   }
 }

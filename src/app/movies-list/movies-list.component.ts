@@ -27,6 +27,8 @@ export class MoviesListComponent implements OnInit {
 
   maxPrice!: number;
 
+  public loading = true;
+
   //const obj = new ClassName();
   //const movieService = new MovieService();
   //movieService.methodCall()
@@ -36,7 +38,8 @@ export class MoviesListComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("OnInit method called");
-    this.movies = this.movieService.getAllMovies();
+    this.movies = this.movieService.getAllMovies(); //3s,5s backend db
+    this.loading = false;
     console.log('movies', this.movies);
   }
 
