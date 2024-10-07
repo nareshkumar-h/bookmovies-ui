@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register2',
@@ -16,15 +17,27 @@ export class Register2Component implements OnInit {
   // email!: string;
   // password!: string;
 
-  constructor() {
+  constructor(private toastr: ToastrService) {
     console.log('RegisterComponent constructor called');
   }
   ngOnInit(): void {
     this.regForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
-      email: new FormControl(''),
-      password: new FormControl('', [Validators.minLength(8)])
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.minLength(8), Validators.maxLength(12)])
     });
+  }
+
+  get name() {
+    return this.regForm.controls["name"];
+  }
+
+  get email() {
+    return this.regForm.controls["email"];
+  }
+
+  get password() {
+    return this.regForm.controls["password"];
   }
 
   onSubmit() {
@@ -34,31 +47,39 @@ export class Register2Component implements OnInit {
     const userObj = this.regForm.value;
     console.log('UserObj:', userObj);
 
-    // console.log('Name:', this.name + ",email:", this.email + ",password:" + this.password);
-
-    // if (this.password.length < 8) {
-    //   alert("Password is too short. Password must atleast 8 digit");
-    // }
-    // const userObj = {
-    //   name: this.name,
-    //   email: this.email,
-    //   password: this.password
-    // };
+    if (this.regForm.invalid) {
+      // alert("Please fill all the details");
+      this.toastr.error("Please fill all the details");
+    } else {
 
 
+      // console.log('Name:', this.name + ",email:", this.email + ",password:" + this.password);
 
-    //1. send userObj to backend REST API url => insert the user details into database
-    //axios.post(url, userObj).then (res=> ...)
+      // if (this.password.length < 8) {
+      //   alert("Password is too short. Password must atleast 8 digit");
+      // }
+      // const userObj = {
+      //   name: this.name,
+      //   email: this.email,
+      //   password: this.password
+      // };
 
-    //2. Temporarily storing users data in localStorage
-    const users = [];
-    users.push(userObj);
-    localStorage.setItem("USERS", JSON.stringify(users));
 
-    // alert("Successfully Registered");
-    //toastr.success("Successfully Registered");
 
-    window.location.href = "/login";
+      //1. send userObj to backend REST API url => insert the user details into database
+      //axios.post(url, userObj).then (res=> ...)
+
+      //2. Temporarily storing users data in localStorage
+      const users = [];
+      users.push(userObj);
+      localStorage.setItem("USERS", JSON.stringify(users));
+
+      // alert("Successfully Registered");
+      this.toastr.success("Successfully Registered");
+
+      window.location.href = "/login";
+
+    }
 
   }
 }

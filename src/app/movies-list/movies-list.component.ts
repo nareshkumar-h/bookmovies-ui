@@ -39,7 +39,7 @@ export class MoviesListComponent implements OnInit {
   ngOnInit(): void {
     console.log("OnInit method called");
     this.movies = this.movieService.getAllMovies(); //3s,5s backend db
-    this.loading = false;
+    // this.loading = false;
     console.log('movies', this.movies);
   }
 
