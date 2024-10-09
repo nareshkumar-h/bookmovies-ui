@@ -1,11 +1,18 @@
 <div class="container-fluid">
-  <h3>Register- using reactive forms</h3>
-  <form (ngSubmit)="onSubmit()" [formGroup]="regForm" class="needs-validation was-validated" novalidate>
+  <h3>Edit User Form</h3>
+
+  Values: {{editUserForm.value | json }}<br />
+  Valid: {{editUserForm.valid}},
+  InValid : {{editUserForm.invalid}}
+
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="editUserForm" class="needs-validation was-validated" novalidate>
 
     <div>
-      <label for="name" class="form-label">Name</label>
+      <label for="name" class="form-label" class="form-label">Name</label>
       <input type="text" name="name" id="name" formControlName="name" placeholder="Enter name" required autofocus>
 
+      <!-- <small *ngIf="( this.editUserForm.controls['name'].dirty || this.editUserForm.controls['name'].touched ) && this.editUserForm.controls['name'].errors?.['required']" class="invalid-feedback"> -->
       <small *ngIf="( name.dirty || name.touched ) && name.errors?.['required']" class="invalid-feedback">
         Name is required
       </small>
@@ -43,7 +50,7 @@
 
 
     <div>
-      <button type="submit" [disabled]="!regForm.valid" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success">Submit</button>
     </div>
   </form>
 </div>

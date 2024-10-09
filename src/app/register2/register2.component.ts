@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -17,14 +17,19 @@ export class Register2Component implements OnInit {
   // email!: string;
   // password!: string;
 
-  constructor(private toastr: ToastrService) {
+  constructor(private toastr: ToastrService, private fb: FormBuilder) {
     console.log('RegisterComponent constructor called');
   }
   ngOnInit(): void {
-    this.regForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.minLength(8), Validators.maxLength(12)])
+    // this.regForm = new FormGroup({
+    //   name: new FormControl('', [Validators.required]),
+    //   email: new FormControl('', [Validators.required, Validators.email]),
+    //   password: new FormControl('', [Validators.minLength(8), Validators.maxLength(12)])
+    // });
+    this.regForm = this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.minLength(8), Validators.maxLength(12)]]
     });
   }
 
