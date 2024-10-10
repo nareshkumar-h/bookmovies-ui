@@ -1,5 +1,7 @@
-<div class="container-fluid">
-  <h1>Movies - {{movie?.title}}</h1>
+<!-- <div class="container-fluid"> -->
+<!-- <h1>Movies - {{movie?.title}}</h1> -->
+
+<sk-page title="{{movie?.title}}">
 
   <!-- <div class="row">
     <div class="col-6">
@@ -25,7 +27,14 @@
         </p>
         <p>
 
-          <span class="badge text-bg-primary">{{movie.language}}</span> &nbsp;
+          <span class="badge text-bg-primary" style="border-radius: 10px;">{{movie.language}}</span> &nbsp;
+          <app-badge color="blue">
+            {{movie.language}}
+          </app-badge>
+
+          <app-badge color="green">
+            {{movie.price | currency:'INR'}}
+          </app-badge>
 
           <span class="badge text-bg-success">{{movie.price | currency:'INR'}}</span>
 
@@ -38,4 +47,4 @@
 
   </div>
 
-</div>
+</sk-page>

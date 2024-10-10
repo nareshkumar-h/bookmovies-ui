@@ -3,12 +3,14 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { FormsModule } from '@angular/forms';
+import { MovieCardComponent } from '../components/movie-card/movie-card.component';
+import { PageComponent } from '../components/page/page.component';
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-movies-list',
   standalone: true,
-  imports: [RouterLink, CommonModule, FormsModule],
+  imports: [RouterLink, CommonModule, FormsModule, MovieCardComponent, PageComponent],
   templateUrl: './movies-list.component.html',
   styles: ``
 })

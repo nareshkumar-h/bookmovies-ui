@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { CommonModule } from '@angular/common';
+import { PageComponent } from '../components/page/page.component';
+import { BadgeComponent } from '../components/badge/badge.component';
 
 @Component({
   selector: 'app-view-movie',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PageComponent, BadgeComponent],
   templateUrl: './view-movie.component.html',
   styles: ``
 })

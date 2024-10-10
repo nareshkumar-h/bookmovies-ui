@@ -1,7 +1,4 @@
-<div class="container-fluid">
-  <h1>Movies</h1>
-
-
+<sk-page title="Movies">
 
   <div class="row">
     <div class="col-3">
@@ -67,24 +64,15 @@
           </div>
         </div>
 
-        @for(movie of movies; track movie){
-        <div class="card col-3 movie-card">
-          <img src="{{movie.imgUrl}}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">{{movie.title}}</h5>
-            <p class="card-text">{{movie.description}}
+        @for(m of movies; track m){
+        <app-movie-card [movie]="m">
 
-              - {{movie.language}}
+        </app-movie-card>
 
-              - Rs.{{movie.price | currency:'INR'}}
-            </p>
-            <a routerLink="{{movie.id}}" class="btn btn-primary">View</a>
-          </div>
-        </div>
         }
       </div>
     </div>
 
   </div>
 
-</div>
+</sk-page>

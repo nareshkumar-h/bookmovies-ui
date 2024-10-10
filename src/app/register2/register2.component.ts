@@ -48,7 +48,7 @@ export class Register2Component implements OnInit {
   onSubmit() {
     console.log('Form Submitted');
     console.log("valid", this.regForm.valid);
-    console.log('value', this.regForm.value);
+    console.log('value', this.regForm.value);//used to get form values
     const userObj = this.regForm.value;
     console.log('UserObj:', userObj);
 

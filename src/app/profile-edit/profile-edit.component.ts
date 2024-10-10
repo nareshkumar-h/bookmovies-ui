@@ -26,7 +26,7 @@ export class ProfileEditComponent implements OnInit {
     this.editUserForm = this.fb.group({
       id: ['', [Validators.required]],
       name: ['', [Validators.required]],
-      email: [, [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]]
     })
 
